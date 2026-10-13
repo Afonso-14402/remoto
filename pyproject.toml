@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "remoto"
+version = "0.1.0"
+description = "Acesso remoto com consentimento: agente Python + cliente web."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "aiohttp>=3.9",
+    "mss>=9.0",
+    "Pillow>=10.0",
+    "pynput>=1.7",
+    "cryptography>=41",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pytest-aiohttp>=1.0"]
+
+[project.scripts]
+remoto = "remoto.__main__:main"
+
+[tool.setuptools]
+packages = ["remoto"]
+
+[tool.setuptools.package-data]
+remoto = ["web/*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
